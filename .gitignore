@@ -271,7 +271,6 @@ pyrightconfig.json
 *.priv
 
 /logs/*
-/vault/*
-/extra-code/*
-/certs/*
 /.idea/
+
+/socket_output/*

@@ -4,11 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-beautifulsoup4 = "*"
-requests = "*"
-protobuf = "*"
-psycopg2 = "*"
-python-dotenv = "*"
 pyinstaller = "*"
 
 [dev-packages]
