@@ -1,20 +1,13 @@
 import socket
 import threading
 import logging
-from config.load_config import Config
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 HEADER = 64
-SERVER = Config.get_socket_host()
-PORT = Config.get_socket_port()
-ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "DISCONNECT"
-
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.bind(ADDR)
 
 
 def handle_client(conn, addr):
@@ -42,7 +35,10 @@ def handle_client(conn, addr):
         logger.info(f"[CONNECTION CLOSED] {addr} disconnected")
 
 
-def start():
+def start(server: str, port: int):
+    ADDR = (server, port)
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.bind(ADDR)
     sock.listen()
     logger.info(f"[LISTENING] Server is listening on {ADDR}")
 
@@ -62,7 +58,3 @@ def start():
     finally:
         sock.close()
         logger.info("[SERVER CLOSED] Server socket closed.")
-
-
-if __name__ == "__main__":
-    start()

@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+DISCONNECT_MESSAGE = 'DISCONNECT'
+
 required_vars = ['SOCKET_HOST', 'SOCKET_PORT']
 missing_vars = [var for var in required_vars if not os.getenv(var)]
 if missing_vars:

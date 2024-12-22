@@ -1,12 +1,8 @@
 import argparse
 import logging
-import sys
-from websocket.client import start, create_socket, send_message_to_server
+from websocket.server import start
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
-
-DISCONNECT_MESSAGE = "DISCONNECT"
 
 
 def parse_arguments():
@@ -18,32 +14,16 @@ def parse_arguments():
 
 
 def main():
-    args = parse_arguments()
-
-    host = args.host
-    port = args.port
-
-    logger.info(f"Connecting to {host} on port {port}...")
-
     try:
-        client_socket = create_socket()
+        args = parse_arguments()
 
-        start(client_socket, host, port)
-
-        while True:
-            message = input("Enter message to send (or 'exit' to close): ")
-
-            if message.lower() == 'exit':
-                logger.info("Exiting connection.")
-                send_message_to_server(client_socket, DISCONNECT_MESSAGE)
-                client_socket.close()
-                break
-
-            send_message_to_server(client_socket, message)
-
+        host = args.host
+        port = args.port
+        start(host, port)
     except Exception as e:
-        logger.error(f"Error occurred: {e}")
-        sys.exit(1)
+        logging.error(f"Error while starting the server: {e}")
+    finally:
+        logging.info("Server has stopped.")
 
 
 if __name__ == "__main__":
