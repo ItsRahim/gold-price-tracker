@@ -44,11 +44,12 @@ if [ -z "$PYTHON" ]; then
     if [ -z "$PYTHON" ]; then
         echo "Python 3.11 installation failed. Please install it manually."
         exit 1
+    else
+      echo "Python 3.11 installed successfully."
     fi
-    echo "Python 3.11 installed successfully."
 else
     PYTHON_VERSION=$("$PYTHON" --version 2>&1)
-    echo "Using Python version: $PYTHON_VERSION. Proceeding with code generation..."
+    echo "Using Python version: $PYTHON_VERSION. Proceeding with socket executable generation..."
 fi
 
 # Check if pipenv is installed, if not install it
@@ -70,12 +71,12 @@ fi
 # Install PyInstaller
 echo "Installing PyInstaller..."
 $PYTHON -m pip install --user pyinstaller
-#if [ $? -ne 0 ]; then
-#    echo "PyInstaller installation failed. Please install it manually."
-#    exit 1
-#else
-#    echo "PyInstaller installed successfully."
-#fi
+if [ $? -eq 0 ]; then
+    echo "PyInstaller installation failed. Please install it manually."
+    exit 1
+else
+    echo "PyInstaller installed successfully."
+fi
 
 # Function to run PyInstaller and move the output to the specified directory
 run_pyinstaller() {
