@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CLIENT_DIR="./server-socket"
-SERVER_DIR="./price-scraper"
+CLIENT_DIR="./price-scraper"
+SERVER_DIR="./server-socket"
 
 SCRIPT_DIR=$(pwd)
 OUTPUT_DIR="$SCRIPT_DIR/socket_output"
