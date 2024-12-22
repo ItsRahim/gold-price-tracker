@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package messages;
+
+message PriceSnapshot {
+  string source = 1;
+  google.protobuf.Timestamp datetime = 2;
+  float price = 3;
+}
+
+message PriceDetails {
+  google.protobuf.Timestamp datetime = 1;
+  float price_per_gram = 2;
+  float price_per_ounce = 3;
+}
+
+option java_multiple_files = true;
