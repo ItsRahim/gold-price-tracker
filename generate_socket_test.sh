@@ -4,7 +4,7 @@ CLIENT_DIR="./server-socket"
 SERVER_DIR="./price-scraper"
 
 SCRIPT_DIR=$(pwd)
-OUTPUT_DIR="$SCRIPT_DIR/socket_output"  # Corrected the OUTPUT_DIR path to be properly assigned
+OUTPUT_DIR="$SCRIPT_DIR/socket_output"
 
 PYTHON=$(which python)
 
