@@ -9,6 +9,7 @@ requests = "*"
 protobuf = "*"
 psycopg2 = "*"
 python-dotenv = "*"
+pyinstaller = "*"
 
 [dev-packages]
 
