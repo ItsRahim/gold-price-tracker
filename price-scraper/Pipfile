@@ -8,6 +8,7 @@ beautifulsoup4 = "*"
 requests = "*"
 protobuf = "*"
 psycopg2 = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
