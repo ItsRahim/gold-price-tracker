@@ -4,7 +4,7 @@ CLIENT_DIR="./price-scraper"
 SERVER_DIR="./server-socket"
 
 SCRIPT_DIR=$(pwd)
-OUTPUT_DIR="$SCRIPT_DIR/socket_output"
+OUTPUT_DIR="$SCRIPT_DIR/test-tools"
 
 PYTHON=$(which python)
 

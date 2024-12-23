@@ -272,5 +272,3 @@ pyrightconfig.json
 
 /logs/*
 /.idea/
-
-/socket_output/*
