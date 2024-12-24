@@ -7,7 +7,7 @@ load_dotenv()
 
 DISCONNECT_MESSAGE = 'DISCONNECT'
 
-required_vars = ['SOCKET_PORT', 'DB_HOST', 'DB_USER', 'DB_PASSWORD']
+required_vars = ['SOCKET_PORT', 'DB_HOST', 'DB_PORT', 'DB_NAME', 'DB_USER', 'DB_PASSWORD']
 missing_vars = [var for var in required_vars if not os.getenv(var)]
 if missing_vars:
     raise EnvironmentError(f"Missing environment variables: {missing_vars}")
@@ -30,6 +30,10 @@ class Config:
     @staticmethod
     def get_db_port() -> int:
         return int(os.getenv('DB_PORT'))
+
+    @staticmethod
+    def get_db_name() -> str:
+        return os.getenv('DB_NAME')
 
     @staticmethod
     def get_db_user() -> str:
