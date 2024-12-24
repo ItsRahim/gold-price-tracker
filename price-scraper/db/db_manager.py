@@ -1,3 +1,4 @@
+import logging
 from contextlib import contextmanager
 
 from sqlalchemy import create_engine, text
@@ -5,6 +6,9 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import sessionmaker
 
 from config.config import Config
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 
 class DatabaseManager:
@@ -27,7 +31,7 @@ class DatabaseManager:
                 result = conn.execute(text(query), params)
                 return result.fetchall()
         except SQLAlchemyError as e:
-            log.error(f"Error executing query: {query}. Error: {e}")
+            logger.error(f"Error executing query: {query}. Error: {e}")
             raise
 
     @contextmanager
@@ -38,7 +42,7 @@ class DatabaseManager:
             session.commit()
         except Exception as e:
             session.rollback()
-            log.error(f"Error during session operation: {e}")
+            logger.error(f"Error during session operation: {e}")
             raise
         finally:
             session.close()
