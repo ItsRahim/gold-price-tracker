@@ -9,6 +9,7 @@ requests = "*"
 protobuf = "*"
 python-dotenv = "*"
 psycopg2-binary = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 
